@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10100f">
+  <meta name="description" content="Aproxime-se da fogueira e alimente a chama. Uma experiência interativa e relaxante.">
+  <title>Brasa — Simulador de fogueira</title>
+  <link rel="stylesheet" href="css/site.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <main class="experience">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Brasa, início">
+        <span class="brand-mark" aria-hidden="true">✳</span>
+        <span>brasa</span>
+      </a>
+      <span class="topbar-note"><span class="status-dot" aria-hidden="true"></span> um momento para desacelerar</span>
+    </header>
+
+    <section class="fire-section" aria-labelledby="page-title">
+      <p class="eyebrow">UM REFÚGIO NO SEU DIA</p>
+      <h1 id="page-title">Acenda o seu <span>momento.</span></h1>
+      <p class="intro">Aproxime-se, respire fundo e cuide da chama.</p>
+
+      <button class="fire-control" id="fire-control" type="button" aria-label="Segure para alimentar a chama">
+        <span class="fire-halo" aria-hidden="true"></span>
+        <canvas id="fire-canvas" aria-hidden="true"></canvas>
+        <span class="control-hint" id="control-hint" aria-hidden="true">
+          <span class="hint-indicator"></span>
+          <span>segure para alimentar a chama</span>
+        </span>
+      </button>
+
+      <div class="intensity" aria-label="Intensidade da chama">
+        <div class="intensity-labels">
+          <span>INTENSIDADE</span>
+          <output id="intensity-value" for="fire-control">0%</output>
+        </div>
+        <div class="intensity-track" id="intensity-track" role="progressbar" aria-label="Intensidade da chama" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <span class="intensity-fill" id="intensity-fill"></span>
+        </div>
+        <div class="intensity-labels intensity-endpoints" aria-hidden="true">
+          <span>BRASA</span>
+          <span>FOGUEIRA</span>
+        </div>
+      </div>
+
+      <p class="keyboard-note">ou mantenha <kbd>ESPAÇO</kbd> pressionado</p>
+    </section>
+
+    <footer class="footer">
+      <span>feito para uma pausa, sem pressa</span>
+      <span class="footer-decoration" aria-hidden="true">✳</span>
+    </footer>
+  </main>
+</body>
+</html>
