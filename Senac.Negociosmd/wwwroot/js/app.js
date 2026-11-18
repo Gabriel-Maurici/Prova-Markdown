@@ -1,14 +1,17 @@
 import { FireSimulation } from './fire-simulation.js';
 import { FireRenderer } from './fire-renderer.js';
+import { LofiMusic } from './lofi-music.js';
 
 const control = document.querySelector('#fire-control');
 const canvas = document.querySelector('#fire-canvas');
 const intensityValue = document.querySelector('#intensity-value');
 const intensityTrack = document.querySelector('#intensity-track');
 const intensityFill = document.querySelector('#intensity-fill');
+const musicToggle = document.querySelector('#music-toggle');
 
 const simulation = new FireSimulation();
 const renderer = new FireRenderer(canvas);
+const lofiMusic = new LofiMusic();
 let activePointerId = null;
 let activeSource = null;
 let animationFrame = null;
@@ -137,3 +140,19 @@ document.addEventListener('visibilitychange', () => {
 
 control.setAttribute('aria-pressed', 'false');
 renderer.draw(0, 0);
+
+musicToggle.addEventListener('click', async () => {
+  musicToggle.disabled = true;
+  try {
+    const enabled = await lofiMusic.toggle();
+    musicToggle.setAttribute('aria-pressed', String(enabled));
+    const label = enabled ? 'Silenciar música de fundo' : 'Ativar música de fundo';
+    musicToggle.setAttribute('aria-label', label);
+    musicToggle.title = label;
+  } catch (error) {
+    musicToggle.title = error.message;
+    musicToggle.setAttribute('aria-label', error.message);
+  } finally {
+    musicToggle.disabled = false;
+  }
+});
